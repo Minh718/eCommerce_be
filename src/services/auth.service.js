@@ -1,4 +1,4 @@
-'useStrict'
+'use strict'
 
 const shopModel = require("../models/shop.model")
 const bcrypt = require('bcrypt')

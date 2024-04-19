@@ -5,6 +5,7 @@ const RepoProduct = require("../repositories/product.repo.js")
 
 const {product, clothing, electronic} = require('../models/product.model.js')
 const { removeNullObject, parserNestedObject } = require("../utils/index.js")
+const InventoryRepo = require("../repositories/inventory.repo.js")
 
 class ProductFactory {
     static productRegister = {}
@@ -40,9 +41,6 @@ class ProductFactory {
     static async findDetailProduct(product_id){
         return await RepoProduct.findDetailProduct({product_id, unSelect: ["__v", "createdAt"]})
     }
-    static async updateProduct(product_id){
-        return;
-    }
 
     static async findAllProducts({limit = 50, sort = 'ctime', page = 1, filter = {isPublish: true}}){
         return await RepoProduct.findAllProducts({limit, sort, page, filter, select: [
@@ -53,10 +51,8 @@ class ProductFactory {
     }
 
     static async updateProduct(type, product_id, payload, userId){
-        console.log("??")
         const classProduct = ProductFactory.productRegister[type]
         if(!classProduct) throw new BadRequestError(`invalid with type: ${type}`)
-        console.log(classProduct)
         return new classProduct(payload).updateProduct(product_id, userId)
     } 
 }
@@ -76,7 +72,15 @@ class Product {
         this.product_attributes = product_attributes
     }
     async createProduct (id) {
-        return await product.create({...this, _id: id})
+        const newProduct = await product.create({...this, _id: id}) 
+        if(!newProduct) throw new BadRequestError("create product error")
+        const newInventory = await InventoryRepo.insertInventory({product_id: newProduct._id, 
+            shop_id: newProduct.product_shop,
+            stock: newProduct.product_quatity,
+        })
+        if(!newInventory) throw new BadRequestError("create inventory error")
+        return newProduct
+        
     }
 
 
