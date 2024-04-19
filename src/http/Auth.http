@@ -1,0 +1,22 @@
+@url= http://localhost:3000/v1/api/
+
+
+
+
+
+
+
+POST {{url}}shop/refreshtoken
+Content-Type: application/json
+x-client-id: 661aac8f312c88cd57b528dc
+x-rtoken-id: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjFhYWM4ZjMxMmM4OGNkNTdiNTI4ZGMiLCJlbWFpbCI6Im1pbmhAZ21haWwuY29tIiwiaWF0IjoxNzEzMDI1NDk5LCJleHAiOjE3MTM2MzAyOTl9.FmCTns0-eiMmh1qkTX166T3ZjFAohKCNMpOnIrwwQYE
+# authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjFhN2UwNzkyZGMwNTdjM2I4M2UzYTUiLCJlbWFpbCI6Im1pbmhAZ21haWwuY29tIiwiaWF0IjoxNzEzMDEyMjMxLCJleHAiOjE3MTMxODUwMzF9.DVTyOlh_DDeWMuo7gdCH_ai6bJRnPjVt9hnI6zB1N1o
+# x-api-key: fdsafsdflsdkjlk
+
+{
+    "name": "minh",
+    "email": "minh@gmail.com",
+    "password": "wft"
+
+}
+
