@@ -23,7 +23,6 @@ class AuthController {
         }).send(res)
     }
     signUp = async (req, res, next) =>{
-        console.log("??")
             return new CREATED({
                 message: "Registered Success",
                 metadata: await AuthService.signUp(req.body)

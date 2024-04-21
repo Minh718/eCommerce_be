@@ -10,7 +10,7 @@ const router = express.Router()
 router.post('/shop/signup', asyncHandlerError(authController.signUp))
 router.post('/shop/login', asyncHandlerError(authController.login))
 
-// router.use(authentication)
+router.use(authentication)
 
 router.post('/shop/logout' ,asyncHandlerError(authController.logout))
 router.post('/shop/refreshtoken' ,asyncHandlerError(authController.handlerRefreshToken))

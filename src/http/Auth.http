@@ -6,17 +6,34 @@
 
 
 
-POST {{url}}shop/refreshtoken
-Content-Type: application/json
-x-client-id: 661aac8f312c88cd57b528dc
-x-rtoken-id: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjFhYWM4ZjMxMmM4OGNkNTdiNTI4ZGMiLCJlbWFpbCI6Im1pbmhAZ21haWwuY29tIiwiaWF0IjoxNzEzMDI1NDk5LCJleHAiOjE3MTM2MzAyOTl9.FmCTns0-eiMmh1qkTX166T3ZjFAohKCNMpOnIrwwQYE
-# authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjFhN2UwNzkyZGMwNTdjM2I4M2UzYTUiLCJlbWFpbCI6Im1pbmhAZ21haWwuY29tIiwiaWF0IjoxNzEzMDEyMjMxLCJleHAiOjE3MTMxODUwMzF9.DVTyOlh_DDeWMuo7gdCH_ai6bJRnPjVt9hnI6zB1N1o
-# x-api-key: fdsafsdflsdkjlk
+# POST  {{url}}shop/refreshtoken
+# Content-type: application/json
+# x-client-id: 6620c9d15bf41c70751e2ce4
+# x-rtoken-id: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjIwYzlkMTViZjQxYzcwNzUxZTJjZTQiLCJlbWFpbCI6Im1pbmhAZ21haWwuY29tIiwiaWF0IjoxNzEzNDI0ODQ5LCJleHAiOjE3MTQwMjk2NDl9.dJrtn2Gzv-bd9JQZHkaimFVyBy4g0MtaT3EUZVcZNeA
+
+# {
+
+# }
+
+
+POST {{url}}discount/create
+Content-type: application/json
+x-client-id: 6620c9d15bf41c70751e2ce4
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjIwYzlkMTViZjQxYzcwNzUxZTJjZTQiLCJlbWFpbCI6Im1pbmhAZ21haWwuY29tIiwiaWF0IjoxNzEzNTQyNTI4LCJleHAiOjE3MTM3MTUzMjh9.uA8r456xN7trxHHgxSqV1shVhedhuDZmkiq5P9ISSnc
 
 {
-    "name": "minh",
-    "email": "minh@gmail.com",
-    "password": "wft"
-
+    "name": "chucs mừng gián sinh", 
+    "description": "khuyến mãi",
+     "type": "percent",
+    "value": 10, 
+    "code": "CMDMDM", 
+    "start_date": "2024-12-12",
+    "end_date": "2024-12-12",
+    "max_is_used": 400, 
+    "total_is_used": 0,
+    "max_per_user": 1, 
+    "min_for_apply": 50000, 
+    "is_active": true,
+    "apply_domain_product": "all",
+    "apply_products": []
 }
-
