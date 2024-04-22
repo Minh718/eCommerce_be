@@ -8,6 +8,7 @@ const { createTokenPair, verifyToken } = require("../utils/authUtils")
 const { getInfoData } = require("../utils")
 const { BadRequestError, AuthFailureError } = require("../core/error.response")
 const ShopService = require("./shop.service")
+const CartRepo = require("../repositories/cart.repo")
 
 
 class AuthService{
@@ -73,17 +74,8 @@ class AuthService{
             const passwordHash = await bcrypt.hash(password, 10)
             const newShop = await shopModel.create({name, email, password: passwordHash, roles: ['ADMIN']})
             if(newShop){
-                // const {privateKey, publicKey} = crypto.generateKeyPairSync('rsa',{
-                //     modulusLength: 4096,
-                //     publicKeyEncoding: {
-                //         type: 'pkcs1',
-                //         format: 'pem'
-                //     },
-                //     KeyEncoding: {
-                //         type: 'pkcs1',
-                //         format: 'pem'
-                //     }
-                // })
+                const CartUser = await CartRepo.createCart({userId: newShop._id})
+                if(!CartUser) throw new BadRequestError("error create cart for user")
                 const publicKey = crypto.randomBytes(64).toString('Hex')
                 const privateKey = crypto.randomBytes(64).toString('Hex')
                 const tokens = await createTokenPair({userId: newShop._id, email}, publicKey, privateKey)

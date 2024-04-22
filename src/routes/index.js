@@ -9,9 +9,10 @@ const {apiKey, validatePermission} = require('../auth/checkAuth')
 // router.use(validatePermission('0000'))
 
 
-router.use('/v1/api', require('./auth'))
 router.use('/v1/api/product', require('./product'))
 router.use('/v1/api/discount', require('./discount'))
+router.use('/v1/api/cart', require('./cart'))
+router.use('/v1/api', require('./auth'))
 
 
 module.exports = router

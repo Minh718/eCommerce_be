@@ -1,6 +1,5 @@
 'use strict'
 
-const { min } = require('lodash');
 const mongoose = require('mongoose'); // Erase if already required
 
 const DOCUMENT_NAME = 'Cart'
@@ -8,12 +7,14 @@ const COLLECTION_NAME = 'Carts'
 
 // Declare the Schema of the Mongo model
 var cartSchema = new mongoose.Schema({
-    cart_products:{type: array, default: []},
-    cart_count_product:{type: String, required:true},
+    cart_products:{type: Array, default: []}, 
+    //[{product_id, quatity, price, name, shop_id}]
+    cart_count_product:{type: Number, required:true, default: 0},
     cart_user_id:{
-        type: mongoose.Types.ObjectId,
-        required: true,
-        ref: "Shop"
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    unique: true,
+    ref: "Shop"
     },
 },
 {
@@ -23,5 +24,5 @@ var cartSchema = new mongoose.Schema({
 
 //Export the model
 module.exports = {
-    cart: mongoose.model(DOCUMENT_NAME, cartSchema)
+    cart_model: mongoose.model(DOCUMENT_NAME, cartSchema)
 };

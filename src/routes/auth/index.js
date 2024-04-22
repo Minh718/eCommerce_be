@@ -13,7 +13,7 @@ router.post('/shop/login', asyncHandlerError(authController.login))
 router.use(authentication)
 
 router.post('/shop/logout' ,asyncHandlerError(authController.logout))
-router.post('/shop/refreshtoken' ,asyncHandlerError(authController.handlerRefreshToken))
+router.get('/shop/refreshtoken' ,asyncHandlerError(authController.handlerRefreshToken))
 
 
 
