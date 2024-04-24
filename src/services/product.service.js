@@ -60,14 +60,14 @@ class ProductFactory {
 class Product {
     constructor({
         product_name, product_thump, product_description,product_attributes,
-        product_type, product_price, product_quatity, product_shop, 
+        product_type, product_price, product_quantity, product_shop, 
     }){
         this.product_name = product_name,
         this.product_thump = product_thump
         this.product_description = product_description
         this.product_type = product_type
         this.product_price = product_price
-        this.product_quatity = product_quatity
+        this.product_quantity = product_quantity
         this.product_shop = product_shop
         this.product_attributes = product_attributes
     }
@@ -76,7 +76,7 @@ class Product {
         if(!newProduct) throw new BadRequestError("create product error")
         const newInventory = await InventoryRepo.insertInventory({product_id: newProduct._id, 
             shop_id: newProduct.product_shop,
-            stock: newProduct.product_quatity,
+            stock: newProduct.product_quantity,
         })
         if(!newInventory) throw new BadRequestError("create inventory error")
         return newProduct

@@ -25,6 +25,10 @@ class RepoProduct {
         //// continue
     } 
 
+    static async getProductById(product_id){
+        return await product.findById(product_id)
+    }
+
     static async updateProductById({product_id, payload, model , userId, isNew = true}){
             return await model.findOneAndUpdate({
                 _id: product_id,
@@ -33,6 +37,19 @@ class RepoProduct {
     }
     static async findDetailProduct({product_id, unSelect}){
         return product.findById(product_id).select(getUnSelectData(unSelect))
+    }
+
+    static async checkProductByServer(products){
+        return await Promise.all(products.map(async product =>{
+            const holderProduct = await RepoProduct.getProductById(product.product_id)
+            if(holderProduct){
+                return {
+                    price: holderProduct.product_price,
+                    quantity: product.quantity,
+                    product_id: product.product_id
+                }
+            }
+        }))
     }
 
     static async searchProducts (keySearch){

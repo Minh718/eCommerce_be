@@ -4,6 +4,13 @@ const { cart_model } = require("../models/cart.model")
 
 
 class CartRepo {
+    static async removeProductInCart({userId, product_id}){
+        const filter = {cart_user_id: userId}
+        , update= {
+            $pull: {cart_products: {product_id: product_id}}
+        }
+        return cart_model.updateOne(filter,update)
+    }
     static async addToCart({userId, product}){
         const filter = {cart_user_id: userId}
         , update= {
