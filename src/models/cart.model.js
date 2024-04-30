@@ -10,8 +10,7 @@ var cartSchema = new mongoose.Schema({
     cart_products:{type: Array, default: []}, 
     //[{product_id, quatity, price, name, shop_id}]
     cart_count_product:{type: Number, required:true, default: 0},
-    cart_user_id:{
-    type: mongoose.Schema.Types.ObjectId,
+    cart_user_id:{type: mongoose.Schema.Types.ObjectId,
     required: true,
     unique: true,
     ref: "Shop"
