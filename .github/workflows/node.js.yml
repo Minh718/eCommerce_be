@@ -26,5 +26,5 @@ jobs:
       - run: npm ci
       - run: |
           touch .env
-          echo" ${{secrets.ENV_SHOPDEV}}" > .env
+          echo "${{secrets.ENV_SHOPDEV}}" > .env
       - run: pm2 restart run_shopDEV
